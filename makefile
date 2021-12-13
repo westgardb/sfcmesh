@@ -10,7 +10,7 @@ LDFLAGS = -lassimp
 BUILDDIR = build
 SRCDIR = src
 
-SRCS = main.c reorder.c
+SRCS = main.c reorder.c morton.c
 
 OBJS = $(addprefix $(BUILDDIR)/, $(SRCS:.c=.o))
 DEPS = $(OBJS:.o=.d)

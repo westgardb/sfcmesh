@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <inttypes.h>
 
 #include <assimp/cimport.h>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
 #include "reorder.h"
-
-typedef struct aiVector3D vec3;
+#include "morton.h"
 
 bool import_model(const char *fp)
 {
@@ -48,5 +48,17 @@ int main(int argc, char *argv[])
 	} else {
 		printf("Usage: sfcmesh input\n");
 	}
+
+	const unsigned int foo = 2;
+
+	for(unsigned int i = 0; i < foo; ++i) {
+		for(unsigned int j = 0; j < foo; ++j) {
+			for(unsigned int k = 0; k < foo; ++k) {
+				printf("Morton encoding of (%u, %u, %u): %" PRIu64 "\n", i,j,k, mortonEncode(i, j, k));
+			}
+		}
+	}
+
+
 	return 0;
 }
